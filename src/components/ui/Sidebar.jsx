@@ -1,13 +1,8 @@
 import React from 'react';
 import SidebarItem from './SidebarItem'; // Assuming you put the above file here
 
-const Sidebar = () => {
-  // Simple state to simulate navigation (optional, but good practice)
-  const [activeItem, setActiveItem] = React.useState('Home');
-
-  // Using a map for icons that can't be simple emojis (e.g. from a library like 'react-icons')
-  // Since we don't have a library, we'll use placeholder text or emojis where possible.
-
+const Sidebar = ({ initialActiveItem = 'Home' }) => {
+  const [activeItem, setActiveItem] = React.useState(initialActiveItem);
   const NavSection = ({ title, items, isEmergency = false, isAdvanced = false }) => (
     <div className="mt-6">
       {title && <h3 className="text-xs font-semibold uppercase text-gray-400 mb-2 px-3">{title}</h3>}
