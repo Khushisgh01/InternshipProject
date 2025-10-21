@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import Home from './pages/Home.jsx'
+import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // We remove useState, reactLogo, and viteLogo imports as they are unused.
+  
+  // The App component now simply serves as the wrapper for the main Home page.
   return (
     <>
       <Home/>
