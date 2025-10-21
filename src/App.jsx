@@ -1,4 +1,5 @@
 import Home from './pages/Home.jsx'
+import Exercises from './pages/Exercises.jsx'
 import './App.css'
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
   // The App component now simply serves as the wrapper for the main Home page.
   return (
     <>
-      <Home/>
+      {/* <Home/> */}
+      <Exercises/>
     </>
   )
 }
