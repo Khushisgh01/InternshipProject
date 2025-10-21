@@ -1,6 +1,7 @@
 import React from 'react'
 import HeroSection from '../components/ui/heroSection.jsx'
 import MoodChecker from '../components/ui/moodChecker.jsx'
+import YourProgress from '../components/ui/yourProgress.jsx'
 
 const Home = () => {
   return (
@@ -8,15 +9,17 @@ const Home = () => {
       
       {/* This div is in the first row */}
       <div className='text-center p-4 row-span-1 col-span-3'>
-        <HeroSection />
+        <HeroSection
+        heading="Good Afternoon!" 
+        subheading="Welcome to your mindful space. How can we support you today?" />
       </div>
 
       {/* This div is in the second row */}
       <div className='p-4 row-span-2 col-span-2'>
         <MoodChecker />
       </div>
-    <div className='p-4 row-span-2 col-span-2'>
-            your progress
+    <div className='p-4 row-span-2 col-span-1'>
+        <YourProgress />
     </div>
         {/* <div>
             affirmations
