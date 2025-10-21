@@ -1,77 +1,47 @@
-// import React from 'react'
-// import HeroSection from '../components/ui/heroSection.jsx'
-// import MoodChecker from '../components/ui/moodChecker.jsx'
-
-// const Home = () => {
-//   return (
-//     <div className='bg-blue-200 min-h-screen grid grid-cols-3 grid-rows-4 '>
-      
-//       {/* This div is in the first row */}
-//       <div className='text-center p-4 row-span-1 col-span-3'>
-//         <HeroSection />
-//       </div>
-
-//       {/* This div is in the second row */}
-//       <div className='p-4 row-span-2 col-span-2'>
-//         <MoodChecker />
-//       </div>
-//     <div className='p-4 row-span-2 col-span-2'>
-//             your progress
-//     </div>
-//         {/* <div>
-//             affirmations
-//         </div>
-//         <div>
-//             insightful thoughts
-
-//         </div> */}
-       
-//     </div>
-//   )
-// }
-
-// export default Home
-import React from 'react';
+import React from 'react'
 import HeroSection from '../components/ui/heroSection.jsx'
 import MoodChecker from '../components/ui/moodChecker.jsx'
-import Sidebar from '../components/ui/Sidebar.jsx' // Import the new Sidebar
+import Sidebar from '../components/ui/Sidebar.jsx' // Assuming the Sidebar component from previous step is here
+import InsightfulThoughts from '../components/ui/insightfulThoughts.jsx' // <-- NEW IMPORT
 
 const Home = () => {
   return (
-    // Change the layout to flex or a grid that separates the sidebar and the main content
     <div className='flex bg-blue-50 min-h-screen'>
-      
-      {/* Sidebar - fixed width */}
       <Sidebar /> 
-
-      {/* Main Content - takes the remaining space */}
-      <div className='flex-1 p-4 bg-blue-200'>
-        {/* This content will now be laid out differently, but we'll try to preserve the original structure's logic */}
+      <div className='flex-1 p-8 bg-gray-50'> 
         
-        <div className='mb-4'> {/* Hero Section */}
+        {/* Header Section */}
+        <div className='mb-8'> 
           <HeroSection />
         </div>
 
-        {/* Main content grid - keeping the original inner grid for the main area */}
-        <div className='grid grid-cols-3 gap-4'>
+        {/* Main Content Grid: Mood Checker and Progress on top, Insights below */}
+        <div className='grid grid-cols-3 gap-6'>
           
-          {/* MoodChecker (now in the first column, spanning 2/3 width) */}
+          {/* MoodChecker (Spans 2 columns) */}
           <div className='col-span-2'>
             <MoodChecker />
           </div>
 
-          {/* Progress/Achievements (now in the second column, 1/3 width) */}
+          {/* Progress/Achievements (Spans 1 column) */}
           <div className='col-span-1 bg-white rounded-2xl shadow-md p-4'>
-            {/* Based on the image, this is the "Your Progress" section */}
-            <h3 className='text-xl font-semibold'>🔥 Your Progress</h3>
-            <p className='text-4xl text-center my-4 text-blue-600'>5</p>
-            <p className='text-center text-sm text-gray-500'>day streak</p>
-            {/* Add other progress/achievement UI here */}
+            <h3 className='text-xl font-semibold text-orange-500 mb-2'>🔥 Your Progress</h3>
+            <div className='text-center'>
+              <p className='text-5xl my-4 font-bold'>5</p>
+              <p className='text-sm text-gray-500'>day streak</p>
+              <div className='mt-4'>
+                <h4 className='font-medium text-gray-700'>Weekly Goal</h4>
+                <div className='h-2 bg-gray-200 rounded-full mt-1'>
+                  <div className='w-[70%] h-2 bg-purple-500 rounded-full'></div>
+                </div>
+                <p className='text-xs text-gray-500 mt-1'>5/7 days</p>
+              </div>
+            </div>
           </div>
           
-          {/* Your progress placeholder from original file (adjusting to a 2/3 column layout if needed) */}
-          <div className='col-span-2 bg-white rounded-2xl shadow-md p-4'>
-              More content/charts (e.g. affirmations/insightful thoughts area)
+          {/* Insightful Thoughts Section */}
+          <div className='col-span-3'>
+              <InsightfulThoughts /> 
           </div>
 
         </div>
