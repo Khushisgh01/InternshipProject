@@ -1,61 +1,3 @@
-// // import Home from './pages/Home.jsx'
-// // import Journel from './pages/Journel.jsx'
-// // import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
-// // const router = createBrowserRouter([
-// //   {
-// //     path: '/',
-// //     element: <Home/>
-// //   },
-// //   {
-// //     path: '/journel',
-// //     element: <Journel/>
-// //   }
-// // ])
-// // function App() {
-
-// //   return (
-// //     <>
-// //       <RouterProvider router={router} />
-// //     </>
-// //   )
-// // }
-
-// // export default App
-// import Home from './pages/Home.jsx'
-// import Journel from './pages/Journel.jsx'
-// import Exercises from './pages/Exercises.jsx' // <-- Add this import
-// import Soundscapes from './pages/Soundscapes.jsx' // <-- Add this import
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <Home/>
-//   },
-//   {
-//     path: '/journel',
-//     element: <Journel/>
-//   },
-//   {
-//     path: '/exercises', // Assuming this route is also needed
-//     element: <Exercises/>
-//   },
-//   {
-//     path: '/soundscapes', // <-- New Route
-//     element: <Soundscapes/>
-//   }
-// ])
-// function App() {
-
-//   return (
-//     <>
-//       <RouterProvider router={router} />
-//     </>
-//   )
-// }
-
-// export default App
 import Home from './pages/Home.jsx'
 import Journel from './pages/Journel.jsx'
 import Exercises from './pages/Exercises.jsx'
@@ -67,6 +9,11 @@ import CrisesContent from './components/ui/CrisesContent.jsx'
 import ImmediateHelp from './components/ui/ImmediateHelp.jsx'
 import WarningSigns from './components/ui/WarningSigns.jsx'
 import SafetyPlan from './components/ui/SafetyPlan.jsx'
+import CommunitySupport from './pages/CommunitySupport.jsx'
+import CommunityFeedPlaceholder from './components/ui/CommunityFeedPlaceholder.jsx'
+import SupportGroupsPlaceholder from './components/ui/SupportGroupsPlaceholder.jsx'
+import WeeklyTopicsPlaceholder from './components/ui/WeeklyTopicsPlaceholder.jsx'
+import GuidelinesContent from './components/ui/GuidelinesContent.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -116,6 +63,29 @@ const router = createBrowserRouter([
         path:'safety-plan',
         element:<SafetyPlan/>
       }
+    ]
+  },
+  // --- NEW ROUTE FOR COMMUNITY SUPPORT ---
+  {
+    path: '/community-support',
+    element: <CommunitySupport />,
+    children: [
+      {
+        index: true,
+        element: <CommunityFeedPlaceholder />
+      },
+      {
+        path: 'support-groups',
+        element: <SupportGroupsPlaceholder /> 
+      },
+      {
+        path: 'weekly-topics',
+        element: <WeeklyTopicsPlaceholder />
+      },
+      {
+        path: 'guidelines',
+        element: <GuidelinesContent />
+      },
     ]
   }
 ])

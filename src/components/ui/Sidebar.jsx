@@ -13,7 +13,7 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
             key={item.text}
             icon={item.icon}
             text={item.text}
-            to={item.to} // <-- FIX 1: Pass the 'to' prop down
+            to={item.to}
             isSelected={activeItem === item.text}
             isEmergency={isEmergency}
             isAdvanced={isAdvanced}
@@ -25,10 +25,9 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
   );
 
   const mainNavItems = [
-    // FIX 2: Changed 'to' values to be valid strings
     { icon: '🏠', text: 'Home' , to: "/"}, 
-    { icon: '💬', text: 'AI Chat' , to: "/chat" }, // Added example path
-    { icon: '📔', text: 'Journal', to: "/journel" }, // Changed to /timeline to match our previous work
+    { icon: '💬', text: 'AI Chat' , to: "/chat" }, 
+    { icon: '📔', text: 'Journal', to: "/journel" },
     { icon: '🧘', text: 'Exercises' , to: '/exercises'},
   ];
 
@@ -41,7 +40,7 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
   const advancedItems = [
     { icon: '📈', text: 'Analytics & Insights' },
     { icon: '🎶', text: 'Soundscapes' , to:'/soundscapes'},
-    { icon: '🫂', text: 'Community Support' },
+    { icon: '🫂', text: 'Community Support' , to:'/community-support'}, // <-- ADDED LINK
     { icon: '🩺', text: 'Find Therapist' },
   ];
   
