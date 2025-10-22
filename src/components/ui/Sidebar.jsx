@@ -40,13 +40,13 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
 
   const advancedItems = [
     { icon: '📈', text: 'Analytics & Insights' },
-    { icon: '🎶', text: 'Soundscapes' },
+    { icon: '🎶', text: 'Soundscapes' , to:'/soundscapes'},
     { icon: '🫂', text: 'Community Support' },
     { icon: '🩺', text: 'Find Therapist' },
   ];
   
   const emergencyItem = [
-    { icon: '📞', text: 'Crisis Support' },
+    { icon: '📞', text: 'Crisis Support' , to:'/crises-support'},
   ];
 
   const profileSettings = [
