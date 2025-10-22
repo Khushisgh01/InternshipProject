@@ -1,8 +1,9 @@
 import React from 'react';
-import SidebarItem from './SidebarItem'; // Assuming you put the above file here
+import SidebarItem from './SidebarItem'; // Make sure this path is correct
 
 const Sidebar = ({ initialActiveItem = 'Home' }) => {
   const [activeItem, setActiveItem] = React.useState(initialActiveItem);
+
   const NavSection = ({ title, items, isEmergency = false, isAdvanced = false }) => (
     <div className="mt-6">
       {title && <h3 className="text-xs font-semibold uppercase text-gray-400 mb-2 px-3">{title}</h3>}
@@ -12,6 +13,7 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
             key={item.text}
             icon={item.icon}
             text={item.text}
+            to={item.to} // <-- FIX 1: Pass the 'to' prop down
             isSelected={activeItem === item.text}
             isEmergency={isEmergency}
             isAdvanced={isAdvanced}
@@ -23,10 +25,11 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
   );
 
   const mainNavItems = [
-    { icon: '🏠', text: 'Home' }, // Using 'Home' instead of the provided icon to match selection
-    { icon: '💬', text: 'AI Chat' },
-    { icon: '📔', text: 'Journal' },
-    { icon: '🧘', text: 'Exercises' },
+    // FIX 2: Changed 'to' values to be valid strings
+    { icon: '🏠', text: 'Home' , to: "/"}, 
+    { icon: '💬', text: 'AI Chat' , to: "/chat" }, // Added example path
+    { icon: '📔', text: 'Journal', to: "/journel" }, // Changed to /timeline to match our previous work
+    { icon: '🧘', text: 'Exercises' , to: '/exercises'},
   ];
 
   const quickActions = [

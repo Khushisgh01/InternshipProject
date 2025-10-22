@@ -1,5 +1,8 @@
 import Home from './pages/Home.jsx'
 import Journel from './pages/Journel.jsx'
+import Exercises from './pages/Exercises.jsx'
+import NewEntryPage from './components/ui/newentryPage.jsx'
+import TimelinePage from './components/ui/timeLinePage.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -9,7 +12,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/journel',
-    element: <Journel/>
+    element:<Journel/>,
+    children: [
+      {
+        path:'new-entry',
+        element:<NewEntryPage/>
+      },
+      {
+        index:true,
+        element:<TimelinePage/>
+      }
+    ]
+  },
+  {
+    path:'/exercises',
+    element:<Exercises/>
   }
 ])
 function App() {

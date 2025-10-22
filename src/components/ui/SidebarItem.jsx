@@ -1,6 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const SidebarItem = ({ icon, text, isSelected, isEmergency, onClick, isAdvanced }) => {
+const SidebarItem = ({ icon, text,to , isSelected, isEmergency, onClick, isAdvanced }) => {
   const baseClasses = "flex items-center p-3 rounded-xl cursor-pointer transition-colors duration-200 text-sm font-medium";
   
   let itemClasses = baseClasses;
@@ -25,10 +26,10 @@ const SidebarItem = ({ icon, text, isSelected, isEmergency, onClick, isAdvanced 
   }
 
   return (
-    <div className={itemClasses} onClick={onClick}>
+    <NavLink className={itemClasses} onClick={onClick} to={to}>
       <span className={iconClasses}>{icon}</span>
       <span>{text}</span>
-    </div>
+    </NavLink>
   );
 };
 
