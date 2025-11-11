@@ -40,8 +40,9 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
   const advancedItems = [
     { icon: '📈', text: 'Analytics & Insights' },
     { icon: '🎶', text: 'Soundscapes' , to:'/soundscapes'},
-    { icon: '🫂', text: 'Community Support' , to:'/community-support'}, // <-- ADDED LINK
-    { icon: '🩺', text: 'Find Therapist' },
+    { icon: '🫂', text: 'Community Support' , to:'/community-support'}, 
+    // UPDATED LINK
+    { icon: '🩺', text: 'Find Therapist', to: '/find-therapist' },
   ];
   
   const emergencyItem = [
@@ -49,7 +50,7 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
   ];
 
   const profileSettings = [
-    { icon: '👤', text: 'Profile & Settings' },
+    { icon: '👤', text: 'Profile & Settings' , to:'/profile-settings'},
   ];
 
   return (
@@ -71,10 +72,7 @@ const Sidebar = ({ initialActiveItem = 'Home' }) => {
         {/* Main Navigation */}
         <NavSection title="MAIN" items={mainNavItems} />
 
-        {/* Quick Actions */}
-        <NavSection title="QUICK ACTIONS" items={quickActions} />
-
-        {/* Advanced Section */}
+       {/* Advanced Section */}
         <NavSection title="ADVANCED" items={advancedItems} isAdvanced={true} />
         
         {/* Emergency Section */}
