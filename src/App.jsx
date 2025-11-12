@@ -19,14 +19,20 @@ import PreferencesContent from './components/ui/PreferencesContent.jsx'
 import AboutContent from './components/ui/AboutContent.jsx'
 import FindTherapist from './pages/FindTherapist.jsx'
 import FindTherapistContent from './components/ui/FindTherapistContent.jsx' 
-import TherapyTypesContent from './components/ui/TherapyTypesContent.jsx' // NEW IMPORT
-import InsuranceCostsContent from './components/ui/InsuranceCostsContent.jsx' // NEW IMPORT
+import TherapyTypesContent from './components/ui/TherapyTypesContent.jsx' 
+import InsuranceCostsContent from './components/ui/InsuranceCostsContent.jsx' 
+import AIChat from './pages/AIChat.jsx' // NEW IMPORT
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home/>
+  },
+  // --- NEW ROUTE FOR AI CHAT ---
+  {
+    path: '/ai-chat',
+    element: <AIChat/>
   },
   {
     path: '/journel',
@@ -72,7 +78,6 @@ const router = createBrowserRouter([
       }
     ]
   },
-  // --- ROUTE FOR COMMUNITY SUPPORT ---
   {
     path: '/community-support',
     element: <CommunitySupport />,
@@ -95,7 +100,6 @@ const router = createBrowserRouter([
       },
     ]
   },
-  // --- ROUTE FOR PROFILE & SETTINGS ---
   {
     path: '/profile-settings',
     element: <ProfileSettings />,
@@ -118,7 +122,6 @@ const router = createBrowserRouter([
       }
     ]
   },
-  // --- UPDATED ROUTE FOR FIND THERAPIST ---
   {
     path: '/find-therapist',
     element: <FindTherapist />,
@@ -128,12 +131,10 @@ const router = createBrowserRouter([
         element: <FindTherapistContent /> 
       },
       {
-        // Now points to TherapyTypesContent
         path: 'types-of-therapy',
         element: <TherapyTypesContent />
       },
       {
-        // Now points to InsuranceCostsContent
         path: 'insurance-costs',
         element: <InsuranceCostsContent />
       }
