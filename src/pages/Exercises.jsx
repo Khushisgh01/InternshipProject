@@ -100,7 +100,7 @@ const Exercises = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredExercises.map((exercise) => (
                 <ExerciseCard 
-                  key={exercise.id}
+                  key={exercise._id}
                   imageSrc={exercise.imageSrc}
                   title={exercise.title}
                   duration={exercise.duration}
