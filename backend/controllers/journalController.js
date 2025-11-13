@@ -1,22 +1,30 @@
-import { loadData, saveData } from '../utils/fileHandler.js'; // Must use named import { }
+// khushisgh01/internshipproject/InternshipProject-cbc12df567540c298725777ce3956a030bf171e4/backend/controllers/journalController.js
 
-const FILENAME = 'journal.json';
+import JournalEntry from '../models/JournalEntry.js'; // 💡 NEW IMPORT - Model
 
-const getJournalEntries = (req, res) => {
-    const entries = loadData(FILENAME);
-    res.json(entries.reverse());
+const getJournalEntries = async (req, res) => {
+    try {
+        // Find all entries, sort by latest creation date, and send
+        const entries = await JournalEntry.find().sort({ createdAt: -1 });
+        res.json(entries);
+    } catch (error) {
+        console.error("Error fetching journal entries:", error);
+        res.status(500).json({ message: "Failed to fetch journal entries" });
+    }
 };
 
-const createJournalEntry = (req, res) => {
-    const newEntry = req.body;
-    const entries = loadData(FILENAME);
+const createJournalEntry = async (req, res) => {
+    const newEntryData = req.body;
     
-    newEntry.id = Date.now();
-    entries.push(newEntry);
-    
-    saveData(FILENAME, entries);
-
-    res.status(201).json(newEntry);
+    try {
+        // Create a new document in the MongoDB collection
+        const newEntry = await JournalEntry.create(newEntryData);
+        
+        res.status(201).json(newEntry);
+    } catch (error) {
+        console.error("Error creating journal entry:", error);
+        res.status(500).json({ message: "Failed to create journal entry" });
+    }
 };
 
 export default {

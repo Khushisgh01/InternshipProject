@@ -1,30 +1,35 @@
-import { loadData, saveData } from '../utils/fileHandler.js'; // Must use named import { }
+// khushisgh01/internshipproject/InternshipProject-cbc12df567540c298725777ce3956a030bf171e4/backend/controllers/communityController.js
 
-const FILENAME = 'community.json';
+import { CommunityPost, CommunityGroup } from '../models/Community.js'; // 💡 NEW IMPORTS - Models
 
-const getCommunityData = (req, res) => {
-    const data = loadData(FILENAME);
-    res.json(data);
+const getCommunityData = async (req, res) => {
+    try {
+        // Fetch posts and groups separately
+        const posts = await CommunityPost.find().sort({ createdAt: -1 });
+        const groups = await CommunityGroup.find();
+        
+        res.json({ posts, groups }); // 💡 Return combined data structure
+    } catch (error) {
+        console.error("Error fetching community data:", error);
+        res.status(500).json({ message: "Failed to fetch community data" });
+    }
 };
 
-const createNewPost = (req, res) => {
+const createNewPost = async (req, res) => {
     const { text, tags, author = "Anonymous" } = req.body;
-    const communityData = loadData(FILENAME);
     
-    const newPost = {
-        id: Date.now(),
-        text,
-        tags: tags || [],
-        timestamp: Date.now(),
-        likes: 0,
-        comments: 0,
-        author,
-    };
+    try {
+        const newPost = await CommunityPost.create({
+            text,
+            tags: tags || [],
+            author,
+        });
 
-    communityData.posts.unshift(newPost); 
-    saveData(FILENAME, communityData);
-
-    res.status(201).json(newPost);
+        res.status(201).json(newPost);
+    } catch (error) {
+        console.error("Error creating new post:", error);
+        res.status(500).json({ message: "Failed to create new post" });
+    }
 };
 
 export default {
